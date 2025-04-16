@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Untuk Dona Velintina</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #ffd6e0, #ffffff);
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 36px;
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .heart {
+      font-size: 50px;
+      color: #e91e63;
+      animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .btn {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .yes-btn {
+      background-color: #e91e63;
+      color: white;
+    }
+
+    .yes-btn:hover {
+      background-color: #d81b60;
+    }
+
+    .no-btn {
+      background-color: #ccc;
+      color: #333;
+      position: absolute;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 500px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="heart">❤️</div>
+    <h1>Dona Velintina</h1>
+    <p>Aku minta maaf dari lubuk hati yang paling dalam. Aku tahu aku salah, dan aku berjanji akan jadi lebih baik lagi untukmu.</p>
+    <button class="btn yes-btn" onclick="showLove()">Maafkan Aku</button>
+    <button class="btn no-btn" id="noBtn">Tidak Aku Maafkan</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+
+    function getRandomPosition() {
+      const card = document.querySelector('.card');
+      const cardRect = card.getBoundingClientRect();
+      const btnWidth = 120;
+      const btnHeight = 40;
+      const padding = 20;
+
+      const maxX = card.clientWidth - btnWidth - padding;
+      const maxY = card.clientHeight - btnHeight - padding;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      return { x, y };
+    }
+
+    function moveButton() {
+      const { x, y } = getRandomPosition();
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
+
+    noBtn.addEventListener('mouseenter', moveButton);
+    window.addEventListener('load', moveButton);
+
+    function showLove() {
+      const card = document.querySelector('.card');
+      card.innerHTML = `
+        <div class="heart">💖</div>
+        <h1>Terima Kasih Sayang</h1>
+        <p>Kamu telah memaafkanku, dan aku janji akan selalu membahagiakanmu. Aku cinta kamu, Dona Velintina ❤️</p>
+      `;
+    }
+  </script>
+</body>
+</html>
